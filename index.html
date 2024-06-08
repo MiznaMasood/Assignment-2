@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Specifications</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Mobile Specifications</h1>
+        <label for="brand-select">Select Brand:</label>
+        <select id="brand-select" onchange="updateModels()">
+            <option value="">--Select a brand--</option>
+        </select>
+
+        <label for="model-select">Select Model:</label>
+        <select id="model-select" onchange="displayDetails()">
+            <option value="">--Select a model--</option>
+        </select>
+
+        <div id="mobile-details" class="mobile-details"></div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
