@@ -661,7 +661,7 @@ let exp2 = 32 && true - ++a && " " || "true";
 console.log(exp2)
 
 // Q4
-let exp3 = (true + 3) * 5 && undefined || "faraz" + 5;
+let exp3 = (true + 3) * 5 && undefined || "Mizna" + 5;
 
 console.log(exp3)
 
