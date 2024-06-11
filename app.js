@@ -640,7 +640,7 @@ function searchBtn() {
 
 // Q1
 
-let exp = "faraz" || (true + false) + 5 && " " || "true";
+let exp = "Mizna" || (true + false) + 5 && " " || "true";
 
 console.log(exp)
 
@@ -678,15 +678,15 @@ let exp6 = (true + false) + 5 || false + 8 + "abc" || "true";
 console.log(exp6)
 
 // Q8
-let exp7 = "faraz" || false + 10 || "true";
+let exp7 = "Mizna" || false + 10 || "true";
 console.log(exp7)
 
 // Q9
-let exp8 = 12 + (false + false) + true && null || "faraz";
+let exp8 = 12 + (false + false) + true && null || "Mizna";
 console.log(exp8)
 
 // Q10
-let exp9 = (false + true + false + 2) || "faraz" && false || 1 + 10;
+let exp9 = (false + true + false + 2) || "Mizna" && false || 1 + 10;
 console.log(exp9)
 
 // Q11
