@@ -594,51 +594,45 @@ var mobiles = {
     },
   };
 
-  document.addEventListener('DOMContentLoaded', () => {
-    const brandSelect = document.getElementById('brand-select');
-    for (const brand in mobiles) {
-        brandSelect.add(new Option(brand, brand));
-    }
-});
+  let brand = document.getElementById('brand')
 
-function updateModels() {
-    const brandSelect = document.getElementById('brand-select');
-    const modelSelect = document.getElementById('model-select');
-    const selectedBrand = brandSelect.value;
+  let model = document.getElementById('model')
 
-    modelSelect.innerHTML = '<option value="">--Select a model--</option>';
+  var brandsKeys = Object.keys(mobiles)
+  
+  for(var i = 0; i < brandsKeys.length;i++){
+    brand.innerHTML += `<option>${brandsKeys[i]}<option>`
+    console.log(brandsKeys[i])
+  }
 
-    if (selectedBrand) {
-        for (const model in mobiles[selectedBrand]) {
-            modelSelect.add(new Option(model, model));
-        }
-    }
+  function selectBrand(){
+    let selectBrand = brand.value;
+    let allModels = Object.keys(mobiles[selectBrand]);
+
+    for(var i = 0; i < allModels.length;i++){
+      model.innerHTML += `<option>${allModels[i]}<option>`}
+      console.log("allModels ==>", allModels)
+  }
+  
+
+function searchBtn() {
+  let brand = document.getElementById('brand').value;
+  let model = document.getElementById('model').value;
+  let detailsDiv = document.getElementById('mobile-details');
+
+  if (brand && model) {
+      let mobileDetails = mobiles[brand][model];
+      let detailsHTML = `<h2>${brand} ${model}</h2>`;
+      for (let key in mobileDetails) {
+          detailsHTML += `<p><strong>${key}:</strong> ${JSON.stringify(mobileDetails[key], null, 2)}</p>`;
+      }
+      detailsDiv.innerHTML = detailsHTML;
+  } else {
+      detailsDiv.innerHTML = 'Please select both brand and model.';
+  }
 }
+  
 
-function displayDetails() {
-    const brandSelect = document.getElementById('brand-select');
-    const modelSelect = document.getElementById('model-select');
-    const detailsDiv = document.getElementById('mobile-details');
-    const selectedBrand = brandSelect.value;
-    const selectedModel = modelSelect.value;
-
-    if (selectedBrand && selectedModel) {
-        const mobile = mobiles[selectedBrand][selectedModel];
-        detailsDiv.innerHTML = `
-            <h2>${selectedBrand} ${selectedModel}</h2>
-            <p><strong>Processor:</strong> ${mobile.processor}</p>
-            <p><strong>RAM:</strong> ${mobile.memory.ram} GB</p>
-            <p><strong>Storage:</strong> ${mobile.memory.storage} GB</p>
-            <p><strong>Rear Camera:</strong> ${mobile.camera.rear.main} MP (main), ${mobile.camera.rear.ultrawide} MP (ultrawide), ${mobile.camera.rear.telephoto} MP (telephoto), ${mobile.camera.rear.telephotoPeriscope} MP (telephoto periscope)</p>
-            <p><strong>Front Camera:</strong> ${mobile.camera.front} MP</p>
-            <p><strong>Battery:</strong> ${mobile.battery} mAh</p>
-            <p><strong>Operating System:</strong> ${mobile.operatingSystem}</p>
-            <p><strong>Special Features:</strong> ${mobile.specialFeatures.join(', ')}</p>
-        `;
-    } else {
-        detailsDiv.innerHTML = '';
-    }
-}
 
 
 
